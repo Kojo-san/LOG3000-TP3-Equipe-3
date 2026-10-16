@@ -30,7 +30,7 @@ def subtract(a,b):
     Returns:
         int | float: Différence attendue entre a et b.
     """
-    return b - a
+    return a - b
 
 def multiply(a,b):
     """Calcule le produit de deux nombres.
