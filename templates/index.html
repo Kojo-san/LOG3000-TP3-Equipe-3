@@ -4,14 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flask Calculator</title>
+<!-- Charge les styles de l'interface de la calculatrice. -->
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 <div class="calculator">
    <h1>Flask Calculator</h1>
+   <!--
+   Formulaire principal de la calculatrice.
+   L'expression est envoyée au serveur Flask via une requête POST.
+   Le résultat est réinjecté dans le champ d'affichage.
+   -->
    <form method="POST">
+      <!--
+      Champ en lecture seule : sa valeur est modifiée par JavaScript
+      et mise à jour par Flask après la soumission du formulaire.
+      -->
       <input type="text" name="display" id="display" value="{{ result }}" readonly>
 
+      <!--
+      Clavier de la calculatrice.
+      Les boutons numériques et les opérateurs construisent l'expression.
+      Le bouton "C" efface l'affichage et le bouton "=" soumet le formulaire.
+      -->
       <div class="buttons">
          <button type="button" class="btn" onclick="appendToDisplay('1')">1</button>
          <button type="button" class="btn" onclick="appendToDisplay('2')">02</button>
@@ -37,11 +52,29 @@
 </div>
 
 <script>
+   /**
+    * Ajoute une valeur à l'expression affichée.
+    *
+    * Cette fonction est appelée lorsqu'un utilisateur clique
+    * sur un bouton numérique ou un opérateur.
+    *
+    * @param {string} value - Caractère à ajouter à l'expression.
+    * @returns {void} Ne retourne aucune valeur.
+    */
    function appendToDisplay(value) {
       const display = document.getElementById('display');
       display.value += value;
    }
 
+   /**
+    * Efface l'expression actuellement affichée.
+    *
+    * Cette fonction est appelée lorsque l'utilisateur
+    * clique sur le bouton C de la calculatrice.
+    *
+    * @param {void} Aucun paramètre.
+    * @returns {void} Ne retourne aucune valeur.
+    */
    function clearDisplay() {
       document.getElementById('display').value = '';
    }
