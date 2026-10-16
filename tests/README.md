@@ -59,18 +59,22 @@ python -m pytest tests/test_operators.py::test_divide_by_zero -v
 6. Relancer les tests concernés.
 7. Exécuter l'ensemble des tests après intégration.
 
-## Résultats initiaux
+### Résultats avant correction
 
-Les tests ont été exécutés avant les corrections.
+Les tests ont été exécutés avant toute modification du code de production.
 
-| Module | Tests | Réussis | Échoués |
-|---|---:|---:|---:|
-| Opérations | 17 | 6 | 11 |
-| Application Flask | 19 | 14 | 5 |
-| Interface HTML | 17 | 13 | 4 |
-| **Total** | **53** | **33** | **20** |
+| Module | Tests réussis | Tests échoués |
+|---|---:|---:|
+| test_operators.py | 6 | 11 |
+| test_app.py | 13 | 6 |
+| test_interface.py | 13 | 4 |
+| **Total** | **32** | **21** |
 
-Les résultats mettent en évidence des erreurs de soustraction, multiplication, division et d'affichage des boutons.
+Les 21 échecs correspondent aux 7 anomalies documentées
+dans les Issues GitHub #2 à #8.
+
+Le détail des résultats est conservé dans
+`tests/resultats_avant_correction.txt`.
 
 ## Limites
 

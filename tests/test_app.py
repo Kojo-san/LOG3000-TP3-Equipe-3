@@ -65,7 +65,7 @@ def test_post_operations(client, expression, expected):
     response = client.post("/", data={"display": expression})
 
     assert response.status_code == 200
-    assert expected.encode() in response.data
+    assert f'value="{expected}"'.encode() in response.data
 
 
 @pytest.mark.parametrize(
@@ -92,7 +92,7 @@ def test_post_invalid_expressions(client, expression, expected):
     response = client.post("/", data={"display": expression})
 
     assert response.status_code == 200
-    assert expected.encode() in response.data
+    assert f'value="Error: {expected}"'.encode() in response.data
 
 
 def test_post_division_by_zero(client):
