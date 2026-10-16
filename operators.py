@@ -42,7 +42,7 @@ def multiply(a,b):
     Returns:
         int | float: Produit attendu de a et b.
     """    
-    return a ** b
+    return a * b
 
 def divide(a,b):
     """Calcule le quotient de deux nombres.
