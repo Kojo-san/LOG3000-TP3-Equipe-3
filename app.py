@@ -1,3 +1,10 @@
+"""Module principal de l'application de calculatrice web.
+
+Ce module initialise le serveur Flask, définit les opérations
+arithmétiques disponibles, analyse les expressions soumises
+et gère les requêtes HTTP vers l'interface utilisateur.
+"""
+
 from flask import Flask, request, render_template
 from operators import add, subtract, multiply, divide
 
@@ -11,6 +18,22 @@ OPS = {
 }
 
 def calculate(expr: str):
+    """Évalue une expression arithmétique contenant deux opérandes.
+
+    L'expression doit contenir exactement un opérateur parmi
+    +, -, * et /. Les espaces sont ignorés.
+
+    Args:
+        expr (str): Expression à évaluer, par exemple "12 + 5".
+
+    Returns:
+        float: Résultat retourné par l'opération sélectionnée.
+
+    Raises:
+        ValueError: Si l'expression est vide, mal formée,
+            contient plusieurs opérateurs ou des opérandes invalides.
+        ZeroDivisionError: Si une division par zéro est effectuée.
+    """
     if not expr or not isinstance(expr, str):
         raise ValueError("empty expression")
 
@@ -42,7 +65,20 @@ def calculate(expr: str):
     return OPS[op_char](a, b)
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
+def index():    
+    """Gère l'affichage et le traitement de la calculatrice web.
+
+    Traite les requêtes GET pour afficher la calculatrice et les
+    requêtes POST pour évaluer l'expression soumise par l'utilisateur.
+
+    Args:
+        Aucun argument explicite. Les données sont récupérées
+        à partir de l'objet request de Flask.
+
+    Returns:
+        str: Page HTML générée à partir du modèle index.html,
+        contenant le résultat du calcul ou un message d'erreur.
+    """
     result = ""
     if request.method == 'POST':
         expression = request.form.get('display', '')
