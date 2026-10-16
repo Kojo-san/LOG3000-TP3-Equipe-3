@@ -57,4 +57,4 @@ def divide(a,b):
     Raises:
         ZeroDivisionError: Si le diviseur est égal à zéro.
     """
-    return a // b
+    return a / b
