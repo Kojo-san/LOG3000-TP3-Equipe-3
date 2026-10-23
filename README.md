@@ -32,21 +32,32 @@ Le projet est limité à une calculatrice simple permettant d'évaluer une expre
 | CSS | Présentation visuelle |
 | JavaScript | Interactions avec les boutons |
 | Git / GitHub | Gestion de versions et collaboration |
-| pytest | Tests automatisés prévus pour le projet |
+| pytest | Exécution des tests automatisés unitaires, applicatifs et d'interface |
 
 ## 3. Structure du projet
 
 ```text
 LOG3000-TP3-Equipe-3/
-├── app.py
-├── operators.py
-├── README.md
 ├── static/
 │   ├── README.md
 │   └── style.css
-└── templates/
-    ├── README.md
-    └── index.html
+├── templates/
+│   ├── index.html
+│   └── README.md
+├── tests/
+│   ├── README.md
+│   ├── resultats_avant_correction.txt
+│   ├── resultats_flask_initiaux.txt
+│   ├── resultats_initiaux.txt
+│   ├── resultats_interface_initiaux.txt
+│   ├── test_app.py
+│   ├── test_interface.py
+│   └── test_operators.py
+├── .gitignore
+├── app.py
+├── operators.py
+├── README.md
+└── requirements.txt
 ```
 
 **Description des composants :**
@@ -58,7 +69,7 @@ LOG3000-TP3-Equipe-3/
 
 Les répertoires `static/` et `templates/` possèdent chacun leur propre README décrivant leurs responsabilités et leurs dépendances.
 
-Un répertoire `tests/` sera ajouté pour les tests automatisés.
+Le répertoire `tests/` contient les tests automatisés des opérations mathématiques, des routes Flask et de l'interface utilisateur, ainsi que les résultats des tests effectués avant les corrections.
 
 ## 4. Prérequis
 
@@ -135,13 +146,17 @@ Résultat attendu : `15`
 
 L'application accepte une seule opération à la fois. Les expressions contenant plusieurs opérateurs ne sont pas prises en charge.
 
-Le projet initial contient des anomalies connues qui seront identifiées par les tests et corrigées dans le cadre du TP3.
+Le projet initial contenait plusieurs anomalies dans les opérations mathématiques et l'interface utilisateur. Ces anomalies ont été identifiées grâce aux tests automatisés, puis corrigées. La version finale permet désormais d'effectuer correctement les quatre opérations arithmétiques.
 
 ## 8. Tests
 
 Les tests automatisés seront développés avec `pytest` et placés dans le répertoire `tests/`.
+La suite comprend 53 tests répartis dans trois fichiers :
+- test_operators.py : 17 tests des opérations mathématiques.
+- test_app.py : 19 tests des routes Flask et du traitement des expressions.
+- test_interface.py : 17 tests de l'interface utilisateur.
 
-Ils permettront notamment de vérifier :
+Ils permettent notamment de vérifier :
 
 - Les quatre opérations arithmétiques.
 - Le traitement des expressions valides.
@@ -161,7 +176,7 @@ Pour exécuter un fichier de tests particulier :
 python -m pytest tests/test_operators.py -v
 ```
 
-Le fichier `tests/README.md` précisera les cas couverts et les instructions d'exécution.
+Le fichier `tests/README.md` décrit les cas couverts et les instructions d'exécution.
 
 ## 9. Processus de contribution
 
@@ -242,10 +257,14 @@ La documentation du projet est répartie entre :
 - **Marily Lemire**
 - **Anita Bou Malham**
 
-Les membres collaborent à la documentation, aux tests, à la correction des bogues et à la révision des Pull Requests.
+Les membres ont collaboré à la documentation, aux tests, à la correction des bogues et à la révision des Pull Requests.
 
 ## 12. État du projet
 
-Projet universitaire en cours de documentation, de vérification et de correction.
+Le projet a été documenté, testé et corrigé dans le cadre du TP3.
 
-Les résultats des tests, les Issues et les Pull Requests permettront de retracer les modifications et de démontrer la fiabilité de la version finale.
+Les sept anomalies identifiées ont été corrigées, et l'ensemble des 53 tests automatisés réussit sur la version finale.
+
+Les GitHub Issues, Pull Requests et commits permettent de retracer les différentes étapes de maintenance et les modifications apportées au code.
+
+La calculatrice a également été exécutée et vérifiée manuellement afin de confirmer son bon fonctionnement.
